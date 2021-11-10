@@ -1,0 +1,1 @@
+web: gunicorn book-reviews-blog.wsgi
