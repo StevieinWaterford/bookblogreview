@@ -1,46 +1,61 @@
-{{% extends "base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 
-
-<header class="masthead">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class=" col-md-8 col-md-10 mx-auto">
-                <div class="site-heading">
-
-
-                    <h3 class=" site-heading my-4 mt-3 text-white">
-                        {% if user.is_authenticated %}
-                        Welcome to my awesome Blog {{ user.username }}
-                        {% else %}
-                        Welcome to my awesome Blog
-                        {% endif %}
-                    </h3>
-                    <p class="text-light"> We love to read...!!! &nbsp
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-<div class="container">
-    <div class="row">
-        <!-- Blog Entries Column -->
-        <div class="col-md-8 mt-3 left">
-            {% for post in post_list %}
-            <div class="card mb-4">
+<div class="container-fluid">
+    <div class="row mt-5 pt-5">
+        <div class="col-md-4">
+            <div class="card my-3 shadow">
                 <div class="card-body">
-                    <h2 class="card-title">{{ post.title }}</h2>
-                    <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
-                    <p class="card-text">{{post.content|slice:":200" }}</p>
-                    <!-- <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a> -->
+                    <h3>Form</h3>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        {% for post in posts %}
+        <div class="card shadow mb-2">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="" alt="img">
+                    </div>
+                    <div class="col-md-8">
+                        <small>{{ post.updated_on }}</small>
+                        <hr>
+                        <a class="h2" href="">{{ post.name}}</a>
+                        <p class="text-justify my-3">
+                            {{ post.content }}
+                        </p>
+                    </div>
                 </div>
             </div>
-            {% endfor %}
         </div>
-
+        {% endfor %}
     </div>
-</div>
-{%endblock%}
+     <div class="col-md-8"> 
+        <div class="card shadow mb-2">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="" alt="img">
+                    </div>
+                    <div class="col-md-8">
+                        <small>29th November 2021</small>
+                        <hr>
+                        <a class="h2" href="">First Blog Post</a>
+                        <p class="text-justify my-3">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam laudantium animi fugit
+                            obcaecati libero officia perferendis eum tempora ea repellendus quos ipsam blanditiis
+                            maiores ex doloremque, esse magnam! At, reiciendis?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock %}
